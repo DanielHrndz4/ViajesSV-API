@@ -2,12 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const placeRoute = require("./routes/place.route");
+const userRoute = require("./routes/user.route");
 
 const app = express();
 const port = process.env.PORT || 9000;
 
 app.use(express.json());
 app.use("/api", placeRoute);
+app.use("/api", userRoute);
 
 app.get("/", (req, res) => {
   res.send("Welcome to my API");
