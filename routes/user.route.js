@@ -4,20 +4,19 @@ const User = require('../model/user.model');
 
 // Create a user
 router.post("/users", (req, res) => {
-  const { firstName, lastName, phoneNumber, email, password } = req.body;
-  const newUser = new User({
-    firstName,
-    lastName,
-    phoneNumber,
-    email,
-    password
+    const { firstName, lastName, phoneNumber, email, password } = req.body;
+    const newUser = new User({
+      firstName,
+      lastName,
+      phoneNumber,
+      email,
+      password
+    });
+  
+    newUser.save()
+      .then((data) => res.status(201).json(data)) // 201 Created
+      .catch((error) => res.status(400).json({ message: error.message })); // 400 Bad Request
   });
-
-  newUser
-    .save()
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-});
 
 // Get all users
 router.get("/users", (req, res) => {
