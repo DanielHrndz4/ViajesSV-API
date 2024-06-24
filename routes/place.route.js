@@ -45,6 +45,13 @@ router.delete("/places/:id", (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
+router.get("/places/category/:category", (req, res) => {
+  const { category } = req.params;
+  Place.find({ category })
+      .then((places) => res.json(places))
+      .catch((error) => res.status(500).json({ message: error.message }));
+});
+
 // Update a place
 router.put("/places/:id", (req, res) => {
   const { id } = req.params;
