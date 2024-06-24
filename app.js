@@ -14,10 +14,7 @@ app.get("/", (req, res) => {
 });
 
 mongoose
-  .connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+  .connect(process.env.DATABASE_URL)
   .then(() => console.log("Connected to MongoDB Atlas"))
   .catch((error) => console.error("Error connecting to MongoDB Atlas:", error));
 
