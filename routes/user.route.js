@@ -47,6 +47,22 @@ router.get("/users/:id", (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 
+router.get("/users/email/:email", (req, res) => {
+    const { email } = req.params;
+
+    User.findOne({ email: email })
+        .then((user) => {
+            if (!user) {
+                return res.status(404).json({ message: "Usuario no encontrado" });
+            }
+            res.json(user);
+        })
+        .catch((error) => {
+            console.error("Error al buscar usuario por email:", error);
+            res.status(500).json({ message: "Error interno del servidor" });
+        });
+});
+
 // Delete a user
 router.delete("/users/:id", (req, res) => {
     const { id } = req.params;
