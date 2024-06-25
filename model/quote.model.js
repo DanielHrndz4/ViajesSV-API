@@ -34,12 +34,8 @@ const QuoteSchema = new mongoose.Schema({
         required: true
     },
     total: {
-        type: Number,
+        type: Double,
         required: true
-    },
-    placeId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Place',
     }
 });
 
