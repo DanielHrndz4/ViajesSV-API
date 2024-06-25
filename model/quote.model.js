@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const QuoteSchema = new mongoose.Schema({
+    placeName: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true

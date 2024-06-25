@@ -5,6 +5,7 @@ const Quote = require("../model/quote.model");
 router.post('/quote', async (req, res) => {
     try {
         const {
+            placeName,
             name,
             email,
             selectionDate,
@@ -17,6 +18,7 @@ router.post('/quote', async (req, res) => {
         } = req.body;
 
         const newQuote = new Quote({
+            placeName,
             name,
             email,
             selectionDate,
